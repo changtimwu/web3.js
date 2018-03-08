@@ -230,7 +230,7 @@ export declare interface Tx {
 
 }
 export declare interface IProvider {
-  send(payload: JsonRPCRequest, callback: (e: Error, val: JsonRPCResponse) => void)
+  send(payload: JsonRPCRequest, callback: (e: Error, val: JsonRPCResponse) => void):void
 }
 export declare interface WebsocketProvider extends IProvider {
   responseCallbacks: object
@@ -272,10 +272,10 @@ export type BlockType = "latest" | "pending" | "genesis" | number
 export declare interface Iban { }
 export declare interface Utils {
   BN: BigNumber // TODO only static-definition
-  isBN(any): boolean
-  isBigNumber(any): boolean
-  isAddress(any): boolean
-  isHex(any): boolean
+  isBN(val: Object): boolean
+  isBigNumber(val: Object): boolean
+  isAddress(val: number | string | BigNumber): boolean
+  isHex(val: string): boolea
   _: us.UnderscoreStatic
   asciiToHex(val: string): string
   hexToAscii(val: string): string
@@ -301,7 +301,7 @@ export declare interface Utils {
   randomHex(bytes: number): string
   stringToHex(val: string): string
   toAscii(hex: string): string
-  toBN(any): BigNumber
+  toBN(val: string | number | BigNumber): BigNumber
   toChecksumAddress(val: string): string
   toDecimal(val: any): number
   toHex(val: any): string
@@ -319,7 +319,7 @@ export declare interface Contract {
     gas: number
   }
   methods: {
-    [fnName: string]: (...args) => TransactionObject<any>
+    [fnName: string]: (...args: any[]) => TransactionObject<any>
   }
   deploy(options: {
     data: string
@@ -456,12 +456,13 @@ export declare class Net {
   isListening(cb?: Callback<boolean>): Promise<boolean>
   getPeerCount(cb?: Callback<number>): Promise<number>
 }
+/* just reference https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal*/
 export declare class Personal {
   newAccount(password: string, cb?: Callback<boolean>): Promise<boolean>
   getAccounts(cb?: Callback<Array<string>>): Promise<Array<string>>
-  importRawKey()
-  lockAccount()
-  unlockAccount()
+  importRawKey(keydata: string, passphrase: string, cb?: Callback<string>): Promise<string>
+  lockAccount(address: string, cb?: Callback<boolean>): Promise<boolean>
+  unlockAccount(address: string, passphrase: string, duration: number, cb?: Callback<boolean>): Promise<boolean>
   sign(dataToSign: string, address: string, password: string, cb?: Callback<string>): Promise<string>
 }
 export declare class Shh { }
