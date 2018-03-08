@@ -462,7 +462,7 @@ export declare class Personal {
   importRawKey()
   lockAccount()
   unlockAccount()
-  sign()
+  sign(dataToSign: string, address: string, password: string, cb?: Callback<string>): Promise<string>
 }
 export declare class Shh { }
 export declare class Bzz { }
