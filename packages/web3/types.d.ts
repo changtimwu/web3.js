@@ -467,7 +467,23 @@ export declare class Personal {
   sign(dataToSign: string, address: string, password: string, cb?: Callback<string>): Promise<string>
 }
 export declare class Shh { }
-export declare class Bzz { }
+declare interface PickTypeData {
+  type: string
+  data: Buffer
+}
+declare interface Pick {
+  data: Promise<Buffer>
+  file: Promise<PickTypeData>
+  directory: Promise<PickTypeData[]>
+}
+export declare class Bzz {
+  constructor(provider: IProvider | string)
+  setProvider(provider: IProvider | string): void
+  currentProvider: IProvider
+  download(bzzhash: string, localpath?: string): Promise<Buffer | object | string>
+  upload(mixed: string | Buffer | object): Promise<string>
+  pick: Pick
+}
 export declare class BatchRequest {
   constructor()
   add(request: Request): void //
