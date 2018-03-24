@@ -275,7 +275,7 @@ export declare interface Utils {
   isBN(val: Object): boolean
   isBigNumber(val: Object): boolean
   isAddress(val: number | string | BigNumber): boolean
-  isHex(val: string): boolea
+  isHex(val: string): boolean
   _: us.UnderscoreStatic
   asciiToHex(val: string): string
   hexToAscii(val: string): string
