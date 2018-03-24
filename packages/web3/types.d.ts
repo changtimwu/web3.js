@@ -455,6 +455,7 @@ export declare class Net {
   getId(cb?: Callback<number>): Promise<number>
   isListening(cb?: Callback<boolean>): Promise<boolean>
   getPeerCount(cb?: Callback<number>): Promise<number>
+  getNetworkType(cb?: Callback<string>): Promise<string>
 }
 /* just reference https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal*/
 export declare class Personal {
