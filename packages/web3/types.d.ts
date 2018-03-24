@@ -230,7 +230,7 @@ export declare interface Tx {
 
 }
 export declare interface IProvider {
-  send(payload: JsonRPCRequest, callback: (e: Error, val: JsonRPCResponse) => void):void
+  send(payload: JsonRPCRequest, callback: (e: Error, val: JsonRPCResponse) => void): void
 }
 export declare interface WebsocketProvider extends IProvider {
   responseCallbacks: object
@@ -296,7 +296,7 @@ export declare interface Utils {
   padLeft(string: string, chars: number, sign: string): string
   rightPad(string: string, chars: number, sign: string): string
   padRight(string: string, chars: number, sign: string): string
-  sha3(val: string, val2?:string, val3?:string, val4?:string, val5?:string): string
+  sha3(val: string, val2?: string, val3?: string, val4?: string, val5?: string): string
   soliditySha3(val: string): string
   randomHex(bytes: number): string
   stringToHex(val: string): string
@@ -385,7 +385,7 @@ export declare class Eth {
     signTransaction(tx: Tx, privateKey: string, returnSignature?: boolean, cb?: (err: Error, result: string | Signature) => void): Promise<string> | Signature
     recoverTransaction(signature: string | Signature): string
     sign(data: string, privateKey: string, returnSignature?: boolean): string | Signature
-    recover(sigOrHash: string | Signature, sigOrV ?: string, r ?: string, s ?: string): string
+    recover(sigOrHash: string | Signature, sigOrV?: string, r?: string, s?: string): string
     encrypt(privateKey: string, password: string): PrivateKey
     decrypt(privateKey: PrivateKey, password: string): Account
     wallet: {
