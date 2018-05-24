@@ -459,13 +459,14 @@ export declare class Net {
 }
 /* just reference https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal*/
 export declare class Personal {
-  newAccount(password: string, cb?: Callback<boolean>): Promise<string>
-  importRawKey(): Promise<string>
-  lockAccount(): Promise<boolean>
-  unlockAccount(): void
-  sign(): Promise<string>
   ecRecover(message:string, sig:string):void
-  sendTransaction(tx:Tx, passphrase:string):Promise<string>
+  newAccount(password: string, cb?: Callback<boolean>): Promise<boolean>
+  getAccounts(cb?: Callback<Array<string>>): Promise<Array<string>>
+  importRawKey(keydata: string, passphrase: string, cb?: Callback<string>): Promise<string>
+  lockAccount(address: string, cb?: Callback<boolean>): Promise<boolean>
+  unlockAccount(address: string, passphrase: string, duration: number, cb?: Callback<boolean>): Promise<boolean>
+  sign(dataToSign: string, address: string, password: string, cb?: Callback<string>): Promise<string>
+  listAccounts(cb?:Callback<string[]>):Promise<string[]>
 }
 export declare class Shh { }
 declare interface PickTypeData {
