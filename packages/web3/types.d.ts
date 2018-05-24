@@ -1,6 +1,6 @@
 import BigNumber from 'bn.js'
 import * as us from 'underscore'
-
+import {Buffer} from 'buffer'
 
 //'{"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{see above}],"id":1}'
 export declare interface JsonRPCRequest {
